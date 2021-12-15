@@ -2,43 +2,19 @@
 {
     static void Main()
     {
-        Console.WriteLine("Введите размерность массива");
+        int[] numbers = new int[] { 1, 3, 5, 7, 9, 15, 17, 20, 25, 19, 30, 44, 70 };
 
-        if (!int.TryParse(Console.ReadLine(), out int n))
-        {
-            Console.WriteLine("Введены неверные данные! Вы должны ввести число");
-            return;
-        }
+        int sum = 0;
 
-        int[,] f = new int[n, n];
-
-        int[] columnMin = new int[n];
-
-        Random rand = new Random();
-
-        for (int i = 0; i < f.GetLength(0); i++)
-        {
-            for (int j = 0; j < f.GetLength(1); j++)
-            {                
-                f[i, j] = rand.Next(1, 100);
-
-                Console.Write("{0} ", f[i, j]);
-
-                if (i == 0 || f[i, j] < columnMin[j])
-                {
-                    columnMin[j] = f[i, j];
-                }
+        foreach (int number in numbers)
+        {            
+            if (number % 5 == 0)
+            {
+                sum += number;
             }
-            Console.WriteLine();
         }
 
-        Console.WriteLine("Наименьшие элементы в столбцах");
-
-        for (int i = 0; i < columnMin.GetLength(0); i++)
-        {
-            Console.Write("{0} ", columnMin[i]);
-        }
+        Console.WriteLine("Сумма равна: {0}", sum);
     }
 }
-
 
